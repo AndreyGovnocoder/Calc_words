@@ -451,19 +451,15 @@ void MainForm::printTechTaskSlot()
         ui.otherClientRBtn->isChecked());
 
     QPixmap pixmap(pathToImage);
-    qDebug() << "size pixmap: " << pixmap.width() << "x" << pixmap.height();
     QPixmap scaled_img = pixmap.scaled(this->width(), this->height(), Qt::KeepAspectRatio);
-    qDebug() << "start size scaled pixmap: " << scaled_img.width() << "x" << scaled_img.height();
     double divider = 1;
     while (scaled_img.height() > 350)
     {
         divider += 0.2;
         scaled_img = pixmap.scaled(this->width() / divider, this->height() / divider, Qt::KeepAspectRatio);
-        qDebug() << "size scaled_img: " << scaled_img.width() << "x" << scaled_img.height();
     }
 
     printForm->image_lbl->setPixmap(scaled_img);
-    qDebug() << "final - size image_lbl: " << printForm->image_lbl->pixmap()->width() << "x" << printForm->image_lbl->pixmap()->height();
     printForm->show();
 }
 
