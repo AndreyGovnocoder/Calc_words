@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/MainForm">
+        <file>icons/expertPlogo.png</file>
+        <file>icons/goose.png</file>
+        <file>icons/headNameImage.png</file>
+        <file>icons/icon.ico</file>
+        <file>icons/logo.png</file>
+    </qresource>
+</RCC>
