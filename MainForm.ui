@@ -944,7 +944,7 @@
       <item>
        <widget class="QPushButton" name="techTask_btn">
         <property name="text">
-         <string>Печать ТЗ</string>
+         <string>ТЗ</string>
         </property>
        </widget>
       </item>

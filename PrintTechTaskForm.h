@@ -6,6 +6,7 @@
 #include <QtPrintSupport/qprinter.h>
 #include <QPrintDialog>
 #include <QtGui>
+#include <QFileDialog>
 
 //a4 = 2484x3511 ï
 
@@ -23,7 +24,9 @@ private:
 	void setReadOnly(bool value);
 	void prepareLineEdits(bool toPrepare);
 	const QString _lineEditBckgrnd = "background-color: rgba(255, 255, 255, 0);\nborder-color: rgba(255, 255, 255, 0);";
+	void setBtnsVisible(bool value);
 
 private slots:
 	void toPrintSlot();
+	void saveTaskSlot();
 };

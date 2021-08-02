@@ -16,7 +16,7 @@ void PrintTechTaskForm::setData(const Profile* profile, bool backDrop, bool othe
 	if (!profile)
 		return;
 	color_lineEdit->setText(profile->get_color());
-	width_lineEdit->setText(QString::number(profile->get_width()) + " мм");
+	width_lineEdit->setText(QString::number(profile->get_width()) + " см");
 }
 
 void PrintTechTaskForm::setReadOnly(bool value)
@@ -65,6 +65,50 @@ void PrintTechTaskForm::prepareLineEdits(bool toPrepare)
 	}
 }
 
+void PrintTechTaskForm::setBtnsVisible(bool value)
+{
+	toPrint_btn->setVisible(value);
+	saveTaskToPNG_btn->setVisible(value);
+}
+
+void PrintTechTaskForm::saveTaskSlot()
+{
+	QSize mWidgetSize;
+	mWidgetSize.setWidth(mainWidget->width());
+	mWidgetSize.setHeight(mainWidget->height());	
+
+	QSize sizeA4;
+	sizeA4.setWidth(775);
+	sizeA4.setHeight(1123);
+
+	QPixmap pixmap(sizeA4);
+
+	prepareLineEdits(true);
+	setBtnsVisible(false);
+	mainWidget->setFixedSize(sizeA4);
+	hide();
+	QString pathToSave = QFileDialog::getSaveFileName(
+		this,
+		"Сохранить ТЗ",
+		QStandardPaths::writableLocation(QStandardPaths::DesktopLocation),
+		"Формат (*.png)");
+	if (pathToSave.isEmpty())
+	{
+		mainWidget->setFixedSize(mWidgetSize);
+		setFixedSize(mWidgetSize);
+		setBtnsVisible(true);
+		show();
+		prepareLineEdits(false);
+		manager_lineEdit->setFocus();
+	}
+	else
+	{
+		mainWidget->render(&pixmap);
+		pixmap.toImage().save(pathToSave, "PNG");
+		deleteLater();
+	}
+}
+
 void PrintTechTaskForm::toPrintSlot()
 {
 	QSize mWidgetSize;
@@ -79,7 +123,7 @@ void PrintTechTaskForm::toPrintSlot()
 
 	hide();
 	prepareLineEdits(true);
-	toPrint_btn->setVisible(false);
+	setBtnsVisible(false);
 	mainWidget->setFixedSize(sizeA4);
 
 	mainWidget->render(&pixmap);
@@ -105,7 +149,7 @@ void PrintTechTaskForm::toPrintSlot()
 		mainWidget->setFixedSize(mWidgetSize);
 		setFixedSize(mWidgetSize);
 		show();
-		toPrint_btn->setVisible(true);
+		setBtnsVisible(true);
 		prepareLineEdits(false);
 		manager_lineEdit->setFocus();
 	}
