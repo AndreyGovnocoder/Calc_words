@@ -944,7 +944,7 @@
       <item>
        <widget class="QPushButton" name="techTask_btn">
         <property name="text">
-         <string>Печать ТЗ</string>
+         <string>ТЗ</string>
         </property>
        </widget>
       </item>
@@ -1360,8 +1360,18 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
+  <tabstop>perimeterLineEdit</tabstop>
+  <tabstop>squareLineEdit</tabstop>
+  <tabstop>widthLineEdit</tabstop>
+  <tabstop>heightLineEdit</tabstop>
+  <tabstop>oneLettRBtn</tabstop>
+  <tabstop>someLettRBtn</tabstop>
+  <tabstop>profilesComboBox</tabstop>
   <tabstop>backdropCheckBox</tabstop>
+  <tabstop>adverRBtn</tabstop>
+  <tabstop>otherClientRBtn</tabstop>
   <tabstop>calcButton</tabstop>
+  <tabstop>techTask_btn</tabstop>
   <tabstop>resultLineEdit</tabstop>
  </tabstops>
  <resources>

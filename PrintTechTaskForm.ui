@@ -540,6 +540,9 @@
           <property name="frame">
            <bool>true</bool>
           </property>
+          <property name="readOnly">
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
         <item row="1" column="1">
@@ -742,6 +745,9 @@
             </property>
             <property name="frame">
              <bool>true</bool>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -1044,19 +1050,32 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>80</width>
-            <height>30</height>
+            <width>107</width>
+            <height>45</height>
            </size>
           </property>
           <property name="font">
            <font>
             <pointsize>11</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
           <property name="text">
-           <string>Печать</string>
+           <string> Печать</string>
+          </property>
+          <property name="icon">
+           <iconset resource="MainForm.qrc">
+            <normaloff>:/new/prefix1/icons/print-icon.png</normaloff>:/new/prefix1/icons/print-icon.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
           </property>
           <property name="autoDefault">
            <bool>false</bool>
@@ -1066,6 +1085,49 @@
           </property>
           <property name="flat">
            <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="saveTaskToPNG_btn">
+          <property name="minimumSize">
+           <size>
+            <width>130</width>
+            <height>45</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string> Сохранить</string>
+          </property>
+          <property name="icon">
+           <iconset resource="MainForm.qrc">
+            <normaloff>:/new/prefix1/icons/Save-icon.png</normaloff>:/new/prefix1/icons/Save-icon.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -1111,7 +1173,9 @@
   <tabstop>color_lineEdit</tabstop>
   <tabstop>pvc_lineEdit</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="MainForm.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>toPrint_btn</sender>
@@ -1120,8 +1184,8 @@
    <slot>toPrintSlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>268</x>
-     <y>220</y>
+     <x>249</x>
+     <y>583</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -1129,8 +1193,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>saveTaskToPNG_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>PrintTechTaskForm</receiver>
+   <slot>saveTaskSlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>482</x>
+     <y>566</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>711</x>
+     <y>504</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>toPrintSlot()</slot>
+  <slot>saveTaskSlot()</slot>
  </slots>
 </ui>
