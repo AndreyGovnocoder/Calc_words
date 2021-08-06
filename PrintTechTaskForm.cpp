@@ -21,6 +21,7 @@ void PrintTechTaskForm::setData(const Profile* profile, bool backDrop, bool othe
 
 void PrintTechTaskForm::setReadOnly(bool value)
 {
+	client_lineEdit->clearFocus();
 	client_lineEdit->setReadOnly(value);
 	count_lineEdit->setReadOnly(value);
 	acrilyc_lineEdit->setReadOnly(value);
@@ -75,7 +76,7 @@ void PrintTechTaskForm::saveTaskSlot()
 {
 	QSize mWidgetSize;
 	mWidgetSize.setWidth(mainWidget->width());
-	mWidgetSize.setHeight(mainWidget->height());	
+	mWidgetSize.setHeight(mainWidget->height());
 
 	QSize sizeA4;
 	sizeA4.setWidth(775);
@@ -83,15 +84,16 @@ void PrintTechTaskForm::saveTaskSlot()
 
 	QPixmap pixmap(sizeA4);
 
+	hide();
 	prepareLineEdits(true);
 	setBtnsVisible(false);
 	mainWidget->setFixedSize(sizeA4);
-	hide();
 	QString pathToSave = QFileDialog::getSaveFileName(
 		this,
 		"Сохранить ТЗ",
 		QStandardPaths::writableLocation(QStandardPaths::DesktopLocation),
 		"Формат (*.png)");
+
 	if (pathToSave.isEmpty())
 	{
 		mainWidget->setFixedSize(mWidgetSize);
